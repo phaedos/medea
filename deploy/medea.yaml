@@ -1,0 +1,40 @@
+database:
+  driver: mysql
+  host: localhost
+  user: root
+  password: character
+  port: 3306
+  dbName: medeadb
+log:
+  console:
+    enable: true
+    level: info
+    format: '%{color:bold}[%{time:2006/01/02 15:04:05.000}] %{pid} %{level:.5s} %{color:reset} %{message}'
+  file:
+    enable: true
+    path: storage/logs/medea.log
+    level: warn
+    format: '[%{time:2006/01/02 15:04:05.000}] %{pid} %{longfile} %{longfunc} %{callpath} ▶ %{level:.4s} %{message}'
+    maxBytesPerFile: 52428800
+http:
+  apiPrefix: /api/medea
+  accessLogFile: storage/logs/medea.http.access.log
+  limitRateByIPEnable: false
+  limitRateByIPInterval: 1000
+  limitRateByIPMaxNum: 100
+  corsEnable: false
+  corsAllowOrigins:
+    - '*'
+  corsAllowMethods:
+    - PUT
+    - PATCH
+    - DELETE
+  corsAllowHeaders:
+    - Origin
+  corsExposeHeaders:
+    - 'Content-Length'
+  corsAllowCredentials: true
+  corsAllowAllOrigins: false
+  corsMaxAge: 3600
+chunk:
+  rootPath: storage/chunks
