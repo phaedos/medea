@@ -26,12 +26,12 @@ The usecase of medea is divided into four steps：
 - step2: create app
 - step3: upload and download file
 
-## step0 build
+## step0: build
 ```
 make
 ```
 
-## step1 prepare mysql
+## step1: prepare mysql
 
 Make sure the mysql database is accessible
 
@@ -55,7 +55,7 @@ Make sure the mysql database is accessible
 ./medea app:list
 ```
 
-## step3 upload and download file
+## step3: upload and download file
 
 1 fetch client token
 
