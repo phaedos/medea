@@ -38,7 +38,28 @@ func env_update(val map[string]string) error {
 	return nil
 }
 
+func isFileExsit(path string) (bool, error) {
+	finfo, err := os.Stat(path)
+	if err != nil {
+		return false, err
+	}
+
+	if !finfo.IsDir() {
+		return true, nil
+	}
+
+	return false, nil
+}
+
 func env_refresh() (map[string]string, error) {
+	ok, err := isFileExsit(envTargetFile)
+	if err != nil || !ok {
+		m := make(map[string]string, 2)
+		m[envMedeaServername] = medeaServer
+		m[envMedeaHostname] = medeaHost
+		return m, nil
+	}
+
 	content, err := ioutil.ReadFile(envTargetFile)
 	if err != nil {
 		panic(err)
